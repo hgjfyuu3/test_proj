@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_proj
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+    continue-on-error: true
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: true
+        generate_statistics: false
+        temp:
+          use_jdbc_metadata_defaults: false
+  cache:
+    type: simple
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    enabled: false
+    drop-first: false
+
+server:
+  error:
+    include-message: always
+
+auth:
+  token:
+    secret: 85DBE15D75EF9308C7AE0F33C7A324CC6F4BF519A2ED2F3027BD33C140A4F9AA
+    expiration: 3600000
